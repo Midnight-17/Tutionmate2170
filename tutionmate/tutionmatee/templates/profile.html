@@ -10,9 +10,11 @@
     <body>
         <div class="teacher-name">
             <h1> {{ teacher.name }}</h1>
+            <h2>Rate: {{ teacher.rate_min }}-{{ teacher.rate_max }}/hr</h2>
             {% for subject in teacher.subjects.all %}
 
             <div class="subject-title {{ subject }}">{{ subject }}</div>
+            
             {% endfor %}
           </div>
           
