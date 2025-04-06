@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Tutor</title>
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Find Your Tutor</h1>
+        <input type="text" placeholder="Search for tutors..." class="search-bar">
+    </header>
+
+    
+    <section class="categories">
+        <span class="category">Near Me</span>
+        <span class="category">Best Reviews</span>
+        <span class="category">Discover New</span>
+    </section>
+    
+    <section class="subject-icons">
+        <div class="subject-circle">
+            <div class="circle"></div>
+            <p>Physics</p>
+        </div>
+        <div class="subject-circle">
+            <div class="circle"></div>
+            <p>Math</p>
+        </div>
+        <div class="subject-circle">
+            <div class="circle"></div>
+            <p>Chemistry</p>
+        </div>
+        <div class="subject-circle">
+            <div class="circle"></div>
+            <p>English</p>
+        </div>
+    </section>
+    
+    <section class="tutor-list">
+        <div class="tutor-card">
+            <h2>Ght</h2>
+            <p>Teaches: <span class="subject">Science</span></p>
+        </div>
+        <div class="tutor-card">
+            <h2>Zoha</h2>
+            <p>Teaches: <span class="subject">History, Geography, Economics</span></p>
+        </div>
+        <div class="tutor-card">
+            <h2>Mishrita</h2>
+            <p>Teaches: <span class="subject">Maths, Additional Maths</span></p>
+        </div>
+        <div class="tutor-card">
+            <h2>Nishanth</h2>
+            <p>Teaches: <span class="subject">Maths, Additional Maths, Physics</span></p>
+        </div>
+    </section>
+</body>

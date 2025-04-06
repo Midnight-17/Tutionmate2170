@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Test Page</title>
+    <link rel="stylesheet" href="{% static 'css/tutionmate.css' %}">
+</head>
+<body>
+    <div class="toppart">
+        <div class="topbg">
+
+        </div>
+        <div class="searchspace">
+            <div>
+            <input class="searchbar" type="search">
+            </div>
+        </div>
+
+    </div>
+    <div class="circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    <div class="nearme tag">near me</div>
+    <div class="displayrows">
+    {% for t in teachers %}
+    <div class="box">
+        <div class="tst name"> {{ t.name }} </div> <!-- Fixed from <float> to <div> -->
+        <div class="tst">Teaches:</div>
+        <div class="subjects">
+            {% for subject in t.subjects.all %}
+            <div class="tst subject"> {{ subject }}</div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <div class="bestreviews tag">Best Reviews</div>
+    <div class="displayrows">
+        {% for t in teachers %}
+        <div class="box">
+            <div class="tst name"> {{ t.name }} </div> <!-- Fixed from <float> to <div> -->
+            <div class="tst">Teaches:</div>
+            <div class="subjects">
+                {% for subject in t.subjects.all %}
+                <div class="tst subject"> {{ subject }}</div>
+                {% endfor %}
+                
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="Discovernew tag">Discover New</div>
+    <div class="displayrows">
+        {% for t in teachers %}
+        <a href = "{% url 'tutionmate:profile' t.name %}" style="color: inherit; text-decoration: none;" ><div class="box">
+            <div class="tst name"> {{ t.name }} </div> <!-- Fixed from <float> to <div> -->
+            <div class="tst">Teaches:</div>
+            <div class="subjects">
+                {% for subject in t.subjects.all %}
+                <div class="tst subject"> {{ subject }}</div>
+                {% endfor %}
+                
+            </div>
+        </div></a>
+        {% endfor %}
+    </div>
+</body>
+</html>
