@@ -4,9 +4,17 @@
     <head>
         <meta charset="utf-8" >
         <title>{{ teacher.name }}</title>
+        <link rel="stylesheet" href = "{% static 'css/global.css' %}">
 
     </head>
     <body>
-        <h1> {{ teacher.name }}</h1>
+        <div class="teacher-name">
+            <h1> {{ teacher.name }}</h1>
+            {% for subject in teacher.subjects.all %}
+
+            <div class="subject-title {{ subject }}">{{ subject }}</div>
+            {% endfor %}
+          </div>
+          
     </body>
 </html>
