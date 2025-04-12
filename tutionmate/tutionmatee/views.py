@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import teacher,subjects
 
 def admin(request):
-    return render(request, "tutionmate.html" , {
+    return render(request, "firstpage.html" , {
         "teachers": teacher.objects.all(),
     })
 

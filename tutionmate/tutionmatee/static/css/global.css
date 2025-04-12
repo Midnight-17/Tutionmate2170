@@ -10,19 +10,26 @@
     --color-primary-hover: #3A9F92; /* Slightly darker hover */
     --color-success: #22C55E;     /* Success color (green) */
     --color-error: #EF4444;       /* Error color (red) */
-    --space-xs: 0.25rem;  /* Extra Small */
-    --space-sm: 0.5rem;   /* Small */
-    --space-md: 1rem;     /* Medium */
-    --space-lg: 2rem;     /* Large */
-    --space-xl: 3rem;     /* Extra Large */
+    --space-xs: 0.5rem;    /* Originally 0.25rem */
+    --space-sm: 1rem;      /* Originally 0.5rem */
+    --space-md: 2rem;      /* Originally 1rem */
+    --space-lg: 4rem;      /* Originally 2rem */
+    --space-xl: 6rem;      /* Originally 3rem */
   }
+
+  /* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
   
   /* Global styles */
   body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: var(--color-text);
     background-color: var(--color-background);
-    text-align: center;
     margin: 0;
     padding: 0;
   }
@@ -117,4 +124,50 @@
     background-color: #512E5F; /* Even Darker Purple */
   }
   
+  .part-label{
+    
+    text-decoration: underline;
+    font-size: x-large;
+    padding-left: var(--space-lg);
+    width: 100%;
+    font-weight: 900 !important;
+
+  }
+
+  #TuitionMate{
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  .part{
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax( 200px, 1fr));;
+    width: 100%;
+    padding: 0;
+    column-gap: var(--space-lg);
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
   
+  .teacher-card {
+    display: flex;
+    flex-direction: column;
+    height: 20vh; /* Allow the card to fill the grid cell */
+    width: 100%;
+    border-radius: var(--space-md);
+    border: 1px solid white;
+    
+  }
+  
+  .teacher-div{
+    height: 100%;
+    width: 100%;
+    border-radius: inherit; /* Optional, if image needs rounding too */
+
+    }
+
+  .teacher-div-bottom-top{
+    display: flex;
+    justify-content: space-between;
+    width: 100%
+  }
