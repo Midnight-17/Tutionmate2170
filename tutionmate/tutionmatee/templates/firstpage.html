@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Tutionmate</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/global.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    </head>
+    <body>
+        <h1 id="TuitionMate">TuitionMate</h1>
+        <h3 class="part-label">Best Reviewed</h3>
+        <div class="part">
+            {% for teacher in teachers %}
+                <div class="teacher-card">
+                    <div class="teacher-div">{{ teacher.name }}</div>
+                    <div class="teacher-div">
+                        <div class="teacher-div-bottom-top"><p>{{ teacher.name }}</p><p>({{ teacher.rate_min }}-{{ teacher.rate_max }})</p></div>
+                        <div class="teacher-div-bottom-bottom">
+                            {% for subject in teacher.subjects.all %}
+                            {{ subject }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <h3 class="part-label">Near You</h3>
+        <div class="part">
+            
+        </div> 
+        <h3 class="part-label">Discover New</h3>
+        <div class="part">
+           
+        </div>
+    </body>
+</html>
