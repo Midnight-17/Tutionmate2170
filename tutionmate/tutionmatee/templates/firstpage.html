@@ -12,7 +12,7 @@
     </head>
     <body>
         <h1 id="TuitionMate">TuitionMate</h1>
-        <h3 class="part-label">Best Reviewed</h3>
+        <a href="{% url 'tutionmate:discover' %}"><h3 class="part-label">Best Reviewed</h3></a>
         <div class="part">
             {% for teacher in teachers %}
                 <div class="teacher-card">
@@ -30,6 +30,7 @@
         </div>
         <h3 class="part-label">Near You</h3>
         <div class="part">
+            <h1>yeet</h1>
             
         </div> 
         <h3 class="part-label">Discover New</h3>

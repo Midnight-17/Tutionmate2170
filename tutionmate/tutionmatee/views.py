@@ -16,4 +16,10 @@ def profile(request, tutor_name):
     })
 
 
+def discover(request):
+    return render(request, "discover.html",{
+        "teachers":teacher.objects.all()
+    })
+
+
 # Create your views here.

@@ -6,6 +6,7 @@ app_name = "tutionmate"
 urlpatterns =[
     path("", views.admin, name = "admin",),
     path("test", views.test, name = "test"),
-    path("profile/<str:tutor_name>", views.profile, name="profile")
+    path("profile/<str:tutor_name>", views.profile, name="profile"),
+    path("Discovernew/", views.discover, name="discover")
 
 ]
