@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import teacher,subjects
+from django.http import JsonResponse
 
 def admin(request):
     return render(request, "firstpage.html" , {
@@ -15,5 +16,19 @@ def profile(request, tutor_name):
         "teacher" : teacher.objects.get(name = tutor_name)
     })
 
+
+def data(request):
+    teachers = teacher.objects.all()
+    
+    data = []
+    for t in teachers:
+        data.append({
+            'name': t.name,
+            'rate_min': t.rate_min,
+            'rate_max': t.rate_max,
+            'subjects': [s.type for s in t.subjects.all()],
+        })
+
+    return JsonResponse({'teachers': data})
 
 # Create your views here.

@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="{% static 'css/global.css' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="{% static 'js/firstpage.js' %}"></script>
 
 
     </head>
@@ -14,8 +15,10 @@
         <h1 id="TuitionMate">TuitionMate</h1>
         <h3 class="part-label">Best Reviewed</h3>
         <div class="part">
-            {% for teacher in teachers %}
+            {% for teacher in teachers|slice:":4"%}
+                <a href="{% url 'tutionmate:profile' teacher.name %}">
                 <div class="teacher-card">
+                    
                     <div class="teacher-div">{{ teacher.name }}</div>
                     <div class="teacher-div">
                         <div class="teacher-div-bottom-top"><p>{{ teacher.name }}</p><p>({{ teacher.rate_min }}-{{ teacher.rate_max }})</p></div>
@@ -25,11 +28,12 @@
                             {% endfor %}
                         </div>
                     </div>
-                </div>
+                </div></a>
             {% endfor %}
         </div>
         <h3 class="part-label">Near You</h3>
-        <div class="part">
+        <div class="part" id="yeet">
+            
             
         </div> 
         <h3 class="part-label">Discover New</h3>

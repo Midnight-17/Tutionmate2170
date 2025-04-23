@@ -23,6 +23,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  color: inherit;         /* Or any color you want, like white or black */
+  text-decoration: none;  /* Removes the underline */
+}
 
   
   /* Global styles */
@@ -49,14 +53,7 @@
     margin: 0.5rem 0;
   }
   
-  /* Links */
-  a {
-    color: var(--color-primary);
-    text-decoration: none;
-  }
-  a:hover {
-    color: var(--color-primary-hover);
-  }
+
   
   /* Buttons */
   button {
@@ -140,20 +137,21 @@
   }
 
   .part{
-    display: grid;
-    grid-template-columns: repeat(auto-fit , minmax( 200px, 1fr));;
-    width: 100%;
-    padding: 0;
-    column-gap: var(--space-lg);
+    display: flex;
+    justify-content: flex-start;
     padding-left: var(--space-md);
     padding-right: var(--space-md);
+    gap: 8vw;
+    overflow-x: auto;
+
   }
   
   .teacher-card {
     display: flex;
     flex-direction: column;
-    height: 20vh; /* Allow the card to fill the grid cell */
-    width: 100%;
+    height: 14vh; /* Allow the card to fill the grid cell */
+    min-width: 200px;
+    width: 16vw;
     border-radius: var(--space-md);
     border: 1px solid white;
     
