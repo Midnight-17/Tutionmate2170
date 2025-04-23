@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Discover Page</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    </head>
+    <body>
+        {% for teacher in teachers %}
+        <div class="teacher">
+            <div class="teacher-image"></div>
+            <div class="teacher-info">
+                <p id="teacher_name">{{ teacher.name }}</p>
+                <p id = "teacher_rate">{{ teacher.rate_min }}-{{ teacher.rate_max }}</p>
+                <div class="subjects">
+                    {% for subject in teacher.subjects.all %}
+                    <div class="subject-title {{ subject }}">{{ subject }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </body>
+</html>

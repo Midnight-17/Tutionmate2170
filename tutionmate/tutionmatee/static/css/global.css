@@ -169,3 +169,24 @@ a {
     justify-content: space-between;
     width: 100%
   }
+.teacher{
+  display: flex;
+  justify-content: start;
+  margin: var(--space-lg);
+  
+}
+
+.teacher-info{
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--space-lg);
+
+}
+
+.teacher-image{
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  border: 1px solid white;
+
+}

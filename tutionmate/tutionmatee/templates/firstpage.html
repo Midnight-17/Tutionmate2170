@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1 id="TuitionMate">TuitionMate</h1>
-        <h3 class="part-label">Best Reviewed</h3>
+        <a href="{% url 'tutionmate:discover' %}"><h3 class="part-label">Best Reviewed</h3></a>
         <div class="part">
             {% for teacher in teachers|slice:":4"%}
                 <a href="{% url 'tutionmate:profile' teacher.name %}">
@@ -32,8 +32,13 @@
             {% endfor %}
         </div>
         <h3 class="part-label">Near You</h3>
+<<<<<<< HEAD
         <div class="part" id="yeet">
             
+=======
+        <div class="part">
+            <h1>yeet</h1>
+>>>>>>> refs/remotes/origin/main
             
         </div> 
         <h3 class="part-label">Discover New</h3>
