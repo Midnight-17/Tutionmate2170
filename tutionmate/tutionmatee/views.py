@@ -17,7 +17,6 @@ def profile(request, tutor_name):
     })
 
 
-<<<<<<< HEAD
 def data(request):
     teachers = teacher.objects.all()
     
@@ -31,12 +30,10 @@ def data(request):
         })
 
     return JsonResponse({'teachers': data})
-=======
 def discover(request):
     return render(request, "discover.html",{
         "teachers":teacher.objects.all()
     })
 
->>>>>>> refs/remotes/origin/main
 
 # Create your views here.
