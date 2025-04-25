@@ -20,6 +20,7 @@ class teacher(models.Model):
         null=True, blank=True, 
         validators=[MinValueValidator(0), MaxValueValidator(10000)]  # Min value 0, Max value 10000
     )
+    image = models.ImageField(upload_to='images/', blank=True)  # images/ is the subfolder in MEDIA_ROOT
 
     def validate_rate(self):
     # Custom validation: rate_max should always be greater than rate_min

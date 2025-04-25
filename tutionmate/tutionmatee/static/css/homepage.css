@@ -54,7 +54,7 @@
   .search-bar {
     width: 60vh; /* Increased width to make it longer */
     max-width: 70vw;
-    height: 5vh; /* Adjusted height to maintain a good aspect ratio */
+    height: 6vh; /* Adjusted height to maintain a good aspect ratio */
     font-size: 2vh; /* Increased font size for readability */
     padding-left: 2vw;
     border: 2px solid #ccc;
@@ -177,6 +177,6 @@
     display: flex;
     gap: var(--space-3);
     overflow-x: auto;
-    margin-bottom: 12vh;
+    margin-bottom: 15vh;
   }
   

@@ -19,7 +19,7 @@
     {% for teacher in teachers|slice:":4"%}
     <a href="{% url 'tutionmate:profile' teacher.name %}">
     <div class="teacher-card">
-      <div class="teacher-img"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80" alt="Cute Dog" /></div>
+      <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
       <div class='teacher-info'>
         <p id="teacher_name">{{ teacher.name }}</p>
         <p id="teacher_rate">${{teacher.rate_min}}-{{teacher.rate_max}}/hr</p>
@@ -32,7 +32,7 @@
     </div></a>
   {% endfor %}
 </div>
-<h2 class="teacher-class">Best Reviews</h2>
+<h2 class="teacher-class">Best Reviewed</h2>
 <div class="teacher-row">
   {% for teacher in teachers|slice:":4"%}
   <a href="{% url 'tutionmate:profile' teacher.name %}">
@@ -67,5 +67,6 @@
     </div>
   </div></a>
 {% endfor %}
+<p></p>
 </body>
 </html>
