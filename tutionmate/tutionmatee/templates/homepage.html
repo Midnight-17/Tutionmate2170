@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+  <!-- Add any meta, links, or scripts here -->
+</head>
+<body>
+  <div class="intro">
+    <input type="text" placeholder="Search for Tutors..." class="search-bar">
+    <h1 id="intro-heading">Join our community today</h1>
+    <p id="intro-para">we have a diverse community of tutors and willing to teach, guide and mentor you to acing your next exam</p>
+  </div>
+  <h2 class="teacher-class">Discover new</h2>
+  <div class="teacher-row">
+    {% for teacher in teachers|slice:":4"%}
+    <a href="{% url 'tutionmate:profile' teacher.name %}">
+    <div class="teacher-card">
+      <div class="teacher-img"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80" alt="Cute Dog" /></div>
+      <div class='teacher-info'>
+        <p id="teacher_name">{{ teacher.name }}</p>
+        <p id="teacher_rate">${{teacher.rate_min}}-{{teacher.rate_max}}/hr</p>
+        <div class="subjects">
+        {% for subject in teacher.subjects.all|slice:":3" %}
+          <p class="subject {{subject.type}}">{{subject.type}}</p>
+        {% endfor %}
+        </div>
+      </div>
+    </div></a>
+  {% endfor %}
+</div>
+<h2 class="teacher-class">Best Reviews</h2>
+<div class="teacher-row">
+  {% for teacher in teachers|slice:":4"%}
+  <a href="{% url 'tutionmate:profile' teacher.name %}">
+  <div class="teacher-card">
+    <div class="teacher-img"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80" alt="Cute Dog" /></div>
+    <div class='teacher-info'>
+      <p id="teacher_name">{{ teacher.name }}</p>
+      <p id="teacher_rate">${{teacher.rate_min}}-{{teacher.rate_max}}/hr</p>
+      <div class="subjects">
+      {% for subject in teacher.subjects.all|slice:":3" %}
+        <p class="subject {{subject.type}}">{{subject.type}}</p>
+      {% endfor %}
+      </div>
+    </div>
+  </div></a>
+{% endfor %}
+</div>
+<h2 class="teacher-class">Near you</h2>
+<div class="teacher-row">
+  {% for teacher in teachers|slice:":4"%}
+  <a href="{% url 'tutionmate:profile' teacher.name %}">
+  <div class="teacher-card">
+    <div class="teacher-img"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80" alt="Cute Dog" /></div>
+    <div class='teacher-info'>
+      <p id="teacher_name">{{ teacher.name }}</p>
+      <p id="teacher_rate">${{teacher.rate_min}}-{{teacher.rate_max}}/hr</p>
+      <div class="subjects">
+      {% for subject in teacher.subjects.all|slice:":3" %}
+        <p class="subject {{subject.type}}">{{subject.type}}</p>
+      {% endfor %}
+      </div>
+    </div>
+  </div></a>
+{% endfor %}
+</body>
+</html>

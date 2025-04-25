@@ -8,6 +8,7 @@ urlpatterns =[
     path("test", views.test, name = "test"),
     path("profile/<str:tutor_name>", views.profile, name="profile"),
     path("data", views.data, name="data"),
-    path("Discovernew/", views.discover, name="discover")
+    path("Discovernew/", views.discover, name="discover"),
+    path("homepage",views.homepage, name="homepage")
 
 ]

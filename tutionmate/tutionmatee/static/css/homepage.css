@@ -1,0 +1,182 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+    font-family: Arial, sans-serif
+  }
+  a {
+    color: inherit;
+    text-decoration: inherit;
+    font: inherit;
+  }
+  
+  :root {
+    /* Font sizes (in rem) */
+    --font-size-sm: 0.875rem;   /* ~14px */
+    --font-size-md: 1rem;       /* 16px (base) */
+    --font-size-lg: 1.25rem;    /* ~20px */
+    --font-size-xl: 1.5rem;     /* ~24px */
+  
+    /* Spacing (in rem) */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    
+    
+    --gradient-bg: linear-gradient(45deg, #222, #333);
+    
+    --color-pri: white;
+    --color-sec: #aaa
+  }
+  
+  .teacher-card{
+    height: 10vw;
+    width: 20vw;
+    border: 1px solid black;
+  }
+  
+  .intro{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 0.25px grey;
+    height: 105vh;
+  }
+  
+  .search-bar {
+    width: 60vh; /* Increased width to make it longer */
+    max-width: 70vw;
+    height: 5vh; /* Adjusted height to maintain a good aspect ratio */
+    font-size: 2vh; /* Increased font size for readability */
+    padding-left: 2vw;
+    border: 2px solid #ccc;
+    border-radius: 50px; /* Large border-radius to create the semi-circle effect */
+    background-color: white;
+    color: #333;
+    margin-top: 6vh;
+  }
+  
+  h1{
+    color: white;
+    font: arial;
+  }
+  
+  p{
+    color:#777;
+    font: arial;
+    font-size: 1.25rem;
+  }
+  
+  #intro-heading{
+    margin-top:25vh;
+    font-size: 4rem ;
+    text-align: center;
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration-color: #66cccc;
+    text-underline-offset: 5px;
+    max-width:90vw;
+    
+  
+    
+  }
+  
+  #intro-para{
+    text-align: center;
+    width: 85%;
+    max-width: 700px;
+    margin-top: var(--space-2);
+  }
+  
+  
+  .teacher-class{
+    font-size: 2rem;
+    color: white;
+    width: fit-content;
+    margin-left: var(--space-7);
+    text-decoration: underline;
+    text-decoration-color: #66cccc;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 4px;
+    font-weight: bolder;
+    margin-bottom: var(--space-6);
+
+    
+  }
+
+  .teacher-card {
+    margin-left: var(--space-6);
+    display: grid;
+    grid-template-rows: 4fr 2fr;
+    height: 20vw; /* 👈 THIS is key */
+    width: 25vw;  /* optional but helps with layout */
+    overflow: hidden;
+    min-width: 250px;
+    min-height: 200px;
+   
+
+  }
+  
+  .teacher-img {
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+  
+  .teacher-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #teacher_name{
+    color: white;
+    margin-top: var(--space-1);
+
+  }
+  .subjects{
+    display: flex;
+    margin-top: var(--space-4);
+    
+
+  }
+
+  .subject{
+    color: rgb(219, 215, 215);
+    font-size: medium;
+    margin-right: var(--space-3);
+    padding: 1px 7px;
+    border-radius: var(--space-1);
+  }
+
+  .Maths {
+    background-color: #154360; /* Even Darker Blue */
+  }
+  
+  .Chemistry {
+    background-color: #1A5D3C; /* Even Darker Green */
+  }
+  
+  .Physics {
+    background-color: #a39a30; /* Lighter Yellow */
+  }
+  
+  
+  .English {
+    background-color: #512E5F; /* Even Darker Purple */
+  }
+
+  .teacher-row{
+    display: flex;
+    gap: var(--space-3);
+    overflow-x: auto;
+    margin-bottom: 12vh;
+  }
+  

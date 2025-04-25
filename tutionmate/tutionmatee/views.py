@@ -35,5 +35,9 @@ def discover(request):
         "teachers":teacher.objects.all()
     })
 
+def homepage(request):
+    return render(request, 'homepage.html',
+            {"teachers":teacher.objects.all()
+                 })
 
 # Create your views here.
