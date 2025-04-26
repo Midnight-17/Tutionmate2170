@@ -139,11 +139,13 @@
   #teacher_name{
     color: white;
     margin-top: var(--space-1);
+    font-weight: bolder;
 
   }
   .subjects{
     display: flex;
     margin-top: var(--space-4);
+    flex-wrap: wrap;
     
 
   }
@@ -154,6 +156,7 @@
     margin-right: var(--space-3);
     padding: 1px 7px;
     border-radius: var(--space-1);
+    margin-top: var(--space-2);
   }
 
   .Maths {
@@ -178,5 +181,45 @@
     gap: var(--space-3);
     overflow-x: auto;
     margin-bottom: 15vh;
+    align-items: center;
+  }
+  
+  .page-title{
+    font-size: 3rem;
+    text-decoration: underline;
+    text-decoration-color: #66cccc;
+    text-underline-offset: 5px;
+    margin-left: var(--space-7);
+    margin-top: var(--space-5);
+    padding-bottom: var(--space-8);
+
+  }
+  .discoverpage-teacher-card{
+    display: flex;
+    margin-left: var(--space-6);
+    min-width: 500px;
+  }
+  .discover-page-teacher-image{
+    height: 18vh;
+    width: 18vh;
+    overflow: hidden;
+    margin-right: var(--space-6);
+    flex-shrink: 0;
+
+  }
+  .discover-page-teacher-image img{
+    object-fit: cover;
+    height:100%;
+    width: 100%;
+    border-radius: 1rem;
+  }
+
+  .discover-page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    row-gap: 2rem;
+    column-gap: 4rem;
+    align-items: center;
+    justify-content: center;
   }
   

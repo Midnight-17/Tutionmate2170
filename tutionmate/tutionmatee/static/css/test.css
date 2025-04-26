@@ -96,3 +96,6 @@ header {
     color: #4a90e2;
     font-weight: bold;
 }
+:root {
+    --gradient-bg: linear-gradient(45deg, #222, #333);
+  }

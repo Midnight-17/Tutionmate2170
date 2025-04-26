@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Discover page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    </head>
+    <body>
+        <h1 class="page-title">Discover New</h1>
+        <div class="discover-page-grid">
+            {% for teacher in teachers %}
+            <a href="{% url 'tutionmate:profile' teacher.name %}">
+            <div class="discoverpage-teacher-card">
+                <div class="discover-page-teacher-image"><img src="{{ teacher.image.url }}" alt="{{ teacher.name }}"></div>
+                <div class="dicover-page-teacher-info">
+                    <p id="teacher_name">{{ teacher.name }}</p>
+                    <p id="teacher_rate">${{ teacher.rate_min }}-{{ teacher.rate_max }}/hr</p>
+                    <div class="subjects">
+                        {% for subject in teacher.subjects.all %}
+                          <p class="subject {{subject.type}}">{{subject.type}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+    </body>
+</html>
