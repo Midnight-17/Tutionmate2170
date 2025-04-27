@@ -17,10 +17,10 @@ def profile(request, tutor_name):
     })
 
 
-def data(request):
+def data(request, start, end):
     teachers = teacher.objects.all()
-    
     data = []
+    x=start
     for t in teachers:
         data.append({
             'name': t.name,
@@ -28,8 +28,13 @@ def data(request):
             'rate_max': t.rate_max,
             'subjects': [s.type for s in t.subjects.all()],
         })
+    
 
     return JsonResponse({'teachers': data})
+
+
+
+
 def discover(request):
     return render(request, "discover.html",{
         "teachers":teacher.objects.all()
