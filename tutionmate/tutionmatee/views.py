@@ -1,6 +1,9 @@
-from django.shortcuts import render
+
 from .models import teacher,subjects
 from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from .forms import CreateTeacherForm
+
 
 def admin(request):
     return render(request, "firstpage.html" , {
@@ -53,4 +56,24 @@ def newdiscover(request):
 
 def loginpage(request):
     return render(request, 'loginpage.html')
+
+
+def signup(request):
+    return render(request, 'signup.html')
+
+
+def create_teacher_view(request):
+    if request.method == 'POST':
+        form = CreateTeacherForm(request.POST, request.FILES)
+        if form.is_valid():
+            teacher_obj = form.save(commit=False)
+            # Here, if you want to hash password, do it before saving:
+            # teacher_obj.password = hash_password_function(form.cleaned_data['password'])
+            teacher_obj.save()
+            form.save_m2m()  # For ManyToManyField, save after saving object
+            return redirect('tutionmate:homepage')  # Redirect after successful form submit
+    else:
+        form = CreateTeacherForm()
+
+    return render(request, 'create_teacher.html', {'form': form})
 # Create your views here.

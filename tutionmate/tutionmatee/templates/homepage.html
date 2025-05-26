@@ -48,7 +48,7 @@
       <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
       <div class='teacher-info'>
         <p id="teacher_name">{{ teacher.name }}</p>
-        <p id="teacher_rate">${{teacher.rate_min}}-{{teacher.rate_max}}/hr</p>
+        <p id="teacher_rate">${{teacher.min_rate}}-{{teacher.max_rate}}/hr</p>
         <div class="subjects">
         {% for subject in teacher.subjects.all|slice:":3" %}
           <p class="subject {{subject.type}}">{{subject.type}}</p>
@@ -73,7 +73,7 @@
       <div class="teacher-img"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80" alt="Cute Dog" /></div>
       <div class='teacher-info'>
         <p id="teacher_name">{{ teacher.name }}</p>
-        <p id="teacher_rate">${{teacher.rate_min}}-{{teacher.rate_max}}/hr</p>
+        <p id="teacher_rate">${{teacher.min_rate}}-{{teacher.max_rate}}/hr</p>
         <div class="subjects">
         {% for subject in teacher.subjects.all|slice:":3" %}
           <p class="subject {{subject.type}}">{{subject.type}}</p>
@@ -96,7 +96,7 @@
       <div class="teacher-img"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80" alt="Cute Dog" /></div>
       <div class='teacher-info'>
         <p id="teacher_name">{{ teacher.name }}</p>
-        <p id="teacher_rate">${{teacher.rate_min}}-{{teacher.rate_max}}/hr</p>
+        <p id="teacher_rate">${{teacher.min_rate}}-{{teacher.max_rate}}/hr</p>
         <div class="subjects">
         {% for subject in teacher.subjects.all|slice:":3" %}
           <p class="subject {{subject.type}}">{{subject.type}}</p>

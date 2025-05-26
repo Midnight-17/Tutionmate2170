@@ -11,6 +11,8 @@ urlpatterns =[
     path("Discovernew/", views.discover, name="discover"),
     path("homepage",views.homepage, name="homepage"),
     path('newdiscover', views.newdiscover, name='newdiscover'),
-    path('loginpage', views.loginpage, name="loginpage")
+    path('loginpage', views.loginpage, name="loginpage"),
+    path('signup', views.signup, name="signup"),
+    path('create-teacher/', views.create_teacher_view, name="create_teacher")
 
 ]

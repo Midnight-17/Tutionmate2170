@@ -1,0 +1,45 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Find a Tutor</title>
+        <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            <label for="id_name">Name:</label>
+            {{ form.name }}
+        
+            <label for="id_subjects">Subjects:</label>
+            {{ form.subjects }}
+        
+            <label for="id_min_rate">Min Rate:</label>
+            {{ form.min_rate }}
+        
+            <label for="id_max_rate">Max Rate:</label>
+            {{ form.max_rate }}
+        
+            <label for="id_image">Image:</label>
+            {{ form.image }}
+        
+            <label for="id_password">Password:</label>
+            {{ form.password }}
+        
+            <label for="id_confirm_password">Confirm Password:</label>
+            {{ form.confirm_password }}
+        
+            <button type="submit">Create Teacher</button>
+        </form>
+        {{ form.as_p }}
+
+        
+    </body>
+</html>

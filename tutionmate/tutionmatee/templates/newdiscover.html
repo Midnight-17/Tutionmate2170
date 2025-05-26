@@ -17,7 +17,7 @@
                 <div class="discover-page-teacher-image"><img src="{{ teacher.image.url }}" alt="{{ teacher.name }}"></div>
                 <div class="dicover-page-teacher-info">
                     <p id="teacher_name">{{ teacher.name }}</p>
-                    <p id="teacher_rate">${{ teacher.rate_min }}-{{ teacher.rate_max }}/hr</p>
+                    <p id="teacher_rate">${{ teacher.min_rate }}-{{ teacher.max_rate }}/hr</p>
                     <div class="subjects">
                         {% for subject in teacher.subjects.all %}
                           <p class="subject {{subject.type}}">{{subject.type}}</p>
