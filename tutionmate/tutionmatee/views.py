@@ -50,4 +50,7 @@ def newdiscover(request):
         "teachers":teacher.objects.all()
     })
 
+
+def loginpage(request):
+    return render(request, 'loginpage.html')
 # Create your views here.

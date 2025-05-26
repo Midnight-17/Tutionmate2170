@@ -10,6 +10,7 @@ urlpatterns =[
     path("data", views.data, name="data"),
     path("Discovernew/", views.discover, name="discover"),
     path("homepage",views.homepage, name="homepage"),
-    path('newdiscover', views.newdiscover, name='newdiscover')
+    path('newdiscover', views.newdiscover, name='newdiscover'),
+    path('loginpage', views.loginpage, name="loginpage")
 
 ]

@@ -1,0 +1,62 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Become A Teacher Today</title>
+  <link rel="stylesheet" href="{% static 'css/loginpage.css' %}">
+</head>
+<body>
+
+<div class="menu" id="menu">
+    &#9776;
+  </div>
+  
+<nav class="sidebar" id="sidebar">
+    <ul class="sidebar-list">
+        <a href="{% url 'tutionmate:homepage' %}"><li>Homepage</li></a>
+        <a href="#"><li>Best Reviewed</li></a>
+        <a href="#"><li>Near Me</li></a>
+        <a href="{% url 'tutionmate:loginpage' %}"><li>Login / Sign Up</li></a>
+    </ul>
+  </nav>
+
+
+
+  <div class="form-container">
+    <h2>Become A Tutor Today</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="subject">Subject Taught</label>
+      <select id="subject" name="subject" required>
+        <option value="">Select Subject</option>
+        <option value="math">Math</option>
+        <option value="science">Science</option>
+        <option value="english">English</option>
+        <option value="history">History</option>
+        <option value="computer">Computer Science</option>
+      </select>
+
+      <label>Rate Range (per hour)</label>
+      <div class="rate-group">
+        <input type="number" name="rate_min" placeholder="Min" required>
+        <input type="number" name="rate_max" placeholder="Max" required>
+      </div>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <button type="submit" class="submit-btn">Sign Up</button>
+    </form>
+  </div>
+<script src="{% static 'js/homepage.js' %}"></script>
+</body>
+</html>

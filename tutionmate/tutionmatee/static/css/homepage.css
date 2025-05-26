@@ -250,6 +250,7 @@
     background-color: white;
     transition: all 0.3s;
     border: transparent;
+    color: black;
 
   } 
 
@@ -283,7 +284,7 @@ li{
   padding: 20px 0px;
   padding-left: var(--space-4);
   font-size: larger;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
 }
 
 li:hover{
