@@ -27,10 +27,10 @@
 
   <div class="form-container">
     <h2>Become A Tutor Today</h2>
-    <form method="POST">
+    <form method="POST" action ="">
       {% csrf_token %}
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
+      <label for="name">Full name</label>
+      {{ form.username }}
 
       <label for="subject">Subject Taught</label>
       <select id="subject" name="subject" required>
@@ -49,11 +49,15 @@
       </div>
 
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
+      {{ form.email }}
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required>
+      <label for="phone">password</label>
+      {{ form.password1 }}
 
+      <label for="phone">confirm password</label>
+      {{ form.password2 }}
+
+      {{ form.errors }}
       <button type="submit" class="submit-btn">Sign Up</button>
     </form>
   </div>

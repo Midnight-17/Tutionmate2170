@@ -2,8 +2,9 @@
 from .models import teacher,subjects
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from .forms import CreateTeacherForm
-
+from .forms import CreateTeacherForm, CreateUser
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate,login,logout
 
 def admin(request):
     return render(request, "firstpage.html" , {
@@ -55,7 +56,14 @@ def newdiscover(request):
 
 
 def loginpage(request):
-    return render(request, 'loginpage.html')
+    form = CreateUser()
+    if request.method == "POST":
+        form = CreateUser(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, "loginpage.html", {
+        "form":form
+    })
 
 
 def signup(request):
@@ -63,17 +71,23 @@ def signup(request):
 
 
 def create_teacher_view(request):
-    if request.method == 'POST':
-        form = CreateTeacherForm(request.POST, request.FILES)
+    form = CreateUser()
+    if request.method == "POST":
+        form = CreateUser(request.POST)
         if form.is_valid():
-            teacher_obj = form.save(commit=False)
-            # Here, if you want to hash password, do it before saving:
-            # teacher_obj.password = hash_password_function(form.cleaned_data['password'])
-            teacher_obj.save()
-            form.save_m2m()  # For ManyToManyField, save after saving object
-            return redirect('tutionmate:homepage')  # Redirect after successful form submit
-    else:
-        form = CreateTeacherForm()
+            form.save()
+    return render(request, "create_teacher.html", {
+        "form":form
+    })
 
-    return render(request, 'create_teacher.html', {'form': form})
-# Create your views here.
+def login1(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('tutionmate:homepage')
+
+    return render(request, "login1.html")
+# Create your views here

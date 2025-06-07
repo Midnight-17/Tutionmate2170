@@ -13,6 +13,7 @@ urlpatterns =[
     path('newdiscover', views.newdiscover, name='newdiscover'),
     path('loginpage', views.loginpage, name="loginpage"),
     path('signup', views.signup, name="signup"),
-    path('create-teacher/', views.create_teacher_view, name="create_teacher")
+    path('create-teacher/', views.create_teacher_view, name="create_teacher"),
+    path('login1', views.login1, name="login1")
 
 ]

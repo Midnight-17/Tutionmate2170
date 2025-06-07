@@ -1,0 +1,44 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Become A Teacher Today</title>
+  <link rel="stylesheet" href="{% static 'css/loginpage.css' %}">
+</head>
+<body>
+
+<div class="menu" id="menu">
+    &#9776;
+  </div>
+  
+<nav class="sidebar" id="sidebar">
+    <ul class="sidebar-list">
+        <a href="{% url 'tutionmate:homepage' %}"><li>Homepage</li></a>
+        <a href="#"><li>Best Reviewed</li></a>
+        <a href="#"><li>Near Me</li></a>
+        <a href="{% url 'tutionmate:loginpage' %}"><li>Login / Sign Up</li></a>
+    </ul>
+  </nav>
+
+
+
+  <div class="form-container">
+    <h2>Become A Tutor Today</h2>
+    <form method="POST" action ="">
+      {% csrf_token %}
+      <label for="name">Username</label>
+      <input name="username" type="text">
+      
+
+      <label for="phone">password</label>
+      <input type="password" name="password">
+
+      <button type="submit" class="submit-btn">Log in</button>
+    </form>
+  </div>
+<script src="{% static 'js/homepage.js' %}"></script>
+</body>
+</html>

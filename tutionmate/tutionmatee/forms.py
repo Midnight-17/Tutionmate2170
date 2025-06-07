@@ -2,6 +2,9 @@
 from django import forms
 from django.core.validators import MinValueValidator, MaxValueValidator
 from .models import teacher, subjects
+from django.contrib.auth.forms import UserCreationForm
+from django import forms
+from django.contrib.auth.models import User
 
 class CreateTeacherForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, required=True)
@@ -18,3 +21,8 @@ class CreateTeacherForm(forms.ModelForm):
 
         if password != confirm_password:
             raise forms.ValidationError("Password and Confirm Password do not match.")
+
+class CreateUser(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ["username","email","password1","password2"]
