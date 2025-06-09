@@ -12,11 +12,11 @@
         <h1 class="page-title">Discover New</h1>
         <div class="discover-page-grid">
             {% for teacher in teachers %}
-            <a href="{% url 'tutionmate:profile' teacher.name %}">
+            <a href="{% url 'tutionmate:profile' teacher.user.username %}">
             <div class="discoverpage-teacher-card">
                 <div class="discover-page-teacher-image"><img src="{{ teacher.image.url }}" alt="{{ teacher.name }}"></div>
                 <div class="dicover-page-teacher-info">
-                    <p id="teacher_name">{{ teacher.name }}</p>
+                    <p id="teacher_name">{{ teacher.user.username }}</p>
                     <p id="teacher_rate">${{ teacher.min_rate }}-{{ teacher.max_rate }}/hr</p>
                     <div class="subjects">
                         {% for subject in teacher.subjects.all %}

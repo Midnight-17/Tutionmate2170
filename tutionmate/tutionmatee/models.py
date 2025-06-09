@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.auth.models import User
+
 
 class subjects(models.Model):
     type = models.CharField(max_length=100)
@@ -10,7 +12,7 @@ class subjects(models.Model):
 
 # Create your models here.
 class teacher(models.Model):
-    name = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     subjects = models.ManyToManyField(subjects, related_name="subjects")
     min_rate = models.BigIntegerField(
         null=True, blank=True, 
@@ -31,4 +33,4 @@ class teacher(models.Model):
                 raise ValidationError({'rate_max': 'rate_max cannot be less than rate_min.'})
 
     def __str__(self):
-        return self.name
+        return self.user.username

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const menu = document.getElementById('menu');
     const sidebar = document.getElementById('sidebar');
     const sidebarlist = sidebar.querySelector('ul')
+    const searchbar = document.getElementById('homepage-search-bar')
 
     menu.addEventListener('mouseover', function() {
         sidebar.style.left = 0;
@@ -12,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.style.left = '-250px';
 
     })
+
+    
 
 
 

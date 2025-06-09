@@ -17,7 +17,7 @@ def test(request):
 
 def profile(request, tutor_name):
     return render(request, "profile.html", {
-        "teacher" : teacher.objects.get(name = tutor_name)
+        "teacher" : teacher.objects.get(user__username = tutor_name)
     })
 
 
@@ -45,9 +45,18 @@ def discover(request):
     })
 
 def homepage(request):
-    return render(request, 'homepage.html',
-            {"teachers":teacher.objects.all()
-                 })
+    if request.method == 'POST':
+        search = request.POST.get('homepage-search-bar').strip()
+        
+        if search:
+            teachers = teacher.objects.filter(user__username__icontains=search)
+            return render(request, 'newdiscover.html',{
+                'teachers':teachers
+            })
+    else:
+        return render(request, 'homepage.html',
+                {"teachers":teacher.objects.all()
+                    })
 
 def newdiscover(request):
     return render(request, 'newdiscover.html',{
@@ -56,14 +65,31 @@ def newdiscover(request):
 
 
 def loginpage(request):
-    form = CreateUser()
-    if request.method == "POST":
-        form = CreateUser(request.POST)
+    if request.method == 'POST':
+        form = CreateTeacherForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-    return render(request, "loginpage.html", {
-        "form":form
-    })
+            # Save User
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+
+            # Save Teacher
+            teacher_obj = teacher.objects.create(
+                user=user,
+                image=form.cleaned_data['image'],
+                min_rate=form.cleaned_data['min_rate'],
+                max_rate=form.cleaned_data['max_rate'],
+            )
+            teacher_obj.subjects.set(form.cleaned_data['subjects'])
+            teacher_obj.save()
+
+            # Redirect or login user
+            return redirect('tutionmate:homepage')  # or wherever you want
+
+    else:
+        form = CreateTeacherForm()
+    
+    return render(request, 'loginpage.html', {'form': form})
 
 
 def signup(request):

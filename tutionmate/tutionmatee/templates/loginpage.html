@@ -27,35 +27,32 @@
 
   <div class="form-container">
     <h2>Become A Tutor Today</h2>
-    <form method="POST" action ="">
+    <form method="POST" action ="" enctype="multipart/form-data">
       {% csrf_token %}
       <label for="name">Full name</label>
       {{ form.username }}
 
+      <label for="image">Profile Photo</label>
+      {{ form.image }}
+
       <label for="subject">Subject Taught</label>
-      <select id="subject" name="subject" required>
-        <option value="">Select Subject</option>
-        <option value="math">Math</option>
-        <option value="science">Science</option>
-        <option value="english">English</option>
-        <option value="history">History</option>
-        <option value="computer">Computer Science</option>
-      </select>
+      {{form.subjects}}
+      
 
       <label>Rate Range (per hour)</label>
       <div class="rate-group">
-        <input type="number" name="rate_min" placeholder="Min" required>
-        <input type="number" name="rate_max" placeholder="Max" required>
+      {{ form.min_rate }}
+      {{ form.max_rate }}
       </div>
 
       <label for="email">Email Address</label>
       {{ form.email }}
 
       <label for="phone">password</label>
-      {{ form.password1 }}
+      {{ form.password }}
 
       <label for="phone">confirm password</label>
-      {{ form.password2 }}
+      {{ form.confirm_password }}
 
       {{ form.errors }}
       <button type="submit" class="submit-btn">Sign Up</button>
