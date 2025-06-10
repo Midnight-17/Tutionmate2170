@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import CreateTeacherForm, CreateUser
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
+from django.db.models import Case, When, Value, IntegerField
 
 def admin(request):
     return render(request, "firstpage.html" , {
@@ -49,9 +50,15 @@ def homepage(request):
         search = request.POST.get('homepage-search-bar').strip()
         
         if search:
-            teachers = teacher.objects.filter(user__username__icontains=search)
-            return render(request, 'newdiscover.html',{
-                'teachers':teachers
+            teachers = teacher.objects.annotate(
+                marclim_priority = Case(
+                    When(user__username__icontains=search, then=Value(0)),
+                    default=Value(1),
+                    output_field=IntegerField()
+                )
+            ).order_by('marclim_priority', 'user__username')
+            return render(request, 'newdiscover.html', {
+                "teachers":teachers
             })
     else:
         return render(request, 'homepage.html',
