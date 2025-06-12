@@ -295,3 +295,10 @@ li:hover{
   transform: translate(20px, -20px);
 
 }
+.profile-icon-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}

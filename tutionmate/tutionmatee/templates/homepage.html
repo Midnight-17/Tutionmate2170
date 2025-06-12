@@ -9,10 +9,23 @@
   <!-- Add any meta, links, or scripts here -->
 </head>
 <body>
-  <div class="menu" id="menu">
+  <div style="display: flex; justify-content: space-between;">
+  <span class="menu" id="menu">
     &#9776;
-  </div>
-  
+  </span>
+  <span style="  padding-top: 30px;
+   padding-right: 20px; align-items: center; font-size: larger; font-weight: bolder;">
+    {% if request.user.is_authenticated %}
+    {% with teacher=request.user.teacher %}
+    <a href="{% url 'tutionmate:profile' request.user.username %}">
+    <img src="{{ teacher.image.url }}" alt="Profile Picture" class="profile-icon-img"
+    style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover;">
+    </a>
+    {% endwith %}
+
+    {% endif %}
+  </span>
+</div>  
 
 
 
