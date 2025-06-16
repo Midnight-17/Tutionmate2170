@@ -55,6 +55,9 @@
       {{ form.confirm_password }}
 
       {{ form.errors }}
+      <p style="text-align: center; padding-bottom: 10px">
+        Have an account already? <a href="{% url 'tutionmate:login1' %}" style="color: #55bbbb;">Login</a>
+      </p>
       <button type="submit" class="submit-btn">Sign Up</button>
     </form>
   </div>

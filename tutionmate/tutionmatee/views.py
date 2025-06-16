@@ -91,7 +91,7 @@ def loginpage(request):
             teacher_obj.save()
 
             # Redirect or login user
-            return redirect('tutionmate:homepage')  # or wherever you want
+            return redirect('tutionmate:login1')  # or wherever you want
 
     else:
         form = CreateTeacherForm()

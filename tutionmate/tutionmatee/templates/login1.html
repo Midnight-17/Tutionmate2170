@@ -36,7 +36,11 @@
       <label for="phone">password</label>
       <input type="password" name="password">
 
+      <p style="text-align: center; padding-bottom: 10px">
+        Dont have an account yet? <a href="{% url 'tutionmate:loginpage' %}" style="color: #55bbbb;">Sign Up</a>
+      </p>
       <button type="submit" class="submit-btn">Log in</button>
+
     </form>
   </div>
 <script src="{% static 'js/homepage.js' %}"></script>
