@@ -45,21 +45,27 @@ def discover(request):
         "teachers":teacher.objects.all()
     })
 
+
+
 def homepage(request):
     if request.method == 'POST':
-        search = request.POST.get('homepage-search-bar').strip()
-        
+        search = request.POST.get('homepage-search-bar', '').strip()
+
         if search:
-            teachers = teacher.objects.annotate(
-                marclim_priority = Case(
-                    When(user__username__icontains=search, then=Value(0)),
-                    default=Value(1),
-                    output_field=IntegerField()
-                )
-            ).order_by('marclim_priority', 'user__username')
+            matching_teachers = teacher.objects.filter(
+                user__username__icontains=search
+            )
+
+            non_matching_teachers = teacher.objects.exclude(
+                user__username__icontains=search
+            ).order_by('?')
+
+            teachers = list(matching_teachers) + list(non_matching_teachers)
+
             return render(request, 'newdiscover.html', {
-                "teachers":teachers
+                "teachers": teachers
             })
+
     else:
         return render(request, 'homepage.html',
                 {"teachers":teacher.objects.all()
