@@ -83,14 +83,12 @@
               <div class="flex w-full flex-col gap-4 items-center">
                 <div class="flex gap-4 flex-col items-center">
                   <div
-                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADdgGazoz4C25eMMRZNhOO-W5IE-gAd3TV7qZkkYp9_LMV238wgkDEeMZ001mF1wX83GprjmSI60LeqLcO7rXJvu2bzQZp7gcElfoALMD8NleFIjFMa-r862JbElqSCy5xHBB35n73KSx4nlXGPX1ErJKeZFC_6yIcF8GQm0Vo-GWhHuz66NNAGqZcpGJG9GOpbH-5gsUdkxy3c8qmCSWyKicMQMMJe1oXQwStV0rY7WThzkN05EI8ZgMTJFqwzPuvaEKAx5EVhiM");'
-                  ></div>
+                  ><img style="height: 200px; width:200px; border-radius: 100px; object-fit: cover" src="{{ teacher.image.url }}"></div>
                   <div class="flex flex-col items-center justify-center justify-center">
                     <p class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">{{ teacher.user.username }}</p>
                     <div style="display: flex; flex-direction: row; gap: 10px;">
                     {% for subject in teacher.subjects.all %}
-                    <p class="text-[#a2b4b4] text-base font-normal leading-normal text-center">{{ subject.type }}  </p>
+                    <p style="color: rgb(219, 215, 215); font-size: medium; margin-right: 10px ;padding: 2px 6px;border-radius:4px ;margin-top: 10px; margin-bottom:10px" data-subject="{{ subject.type }}" class="subject text-base font-normal leading-normal text-center"> {{ subject }}</p>
                     {% endfor %}
                   </div>
                     <p class="text-[#a2b4b4] text-base font-normal leading-normal text-center">Online Teacher</p>
@@ -135,5 +133,25 @@
         </div>
       </div>
     </div>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const subjectColors = {
+      maths: '#154360',
+      chemistry: '#1A5D3C',
+      physics: '#a39a30',
+      english: '#512E5F',
+    };
+
+    document.querySelectorAll('.subject').forEach(el => {
+      const subject = el.dataset.subject.trim().toLowerCase();
+      const color = subjectColors[subject] || '#a2b4b4';
+
+      el.style.backgroundColor = color;
+      el.style.color = 'white';  // for contrast
+    });
+  });
+</script>
+
+
   </body>
 </html>
