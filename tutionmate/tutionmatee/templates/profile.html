@@ -128,14 +128,14 @@
                   </div>
                 </div>
                 <button
-                  id="chat-now-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#2b3636] text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto"
+                  id="chat-now-btn" type="button" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#2b3636] text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto"
                 >
                   <span class="truncate">Chat Now</span>
                 </button>
                 <div id="teacher-info">
                   <p><strong>Teacher:</strong> {{ teacher.user.username }}</p>
                   <p><strong>Email:</strong> {{ teacher.user.email }}</p>
-                  <p><strong>Phone:</strong> test</p>
+                  <p><strong>Phone:</strong> +65 {{ teacher.phone_number }}</p>
                   <button id="close-info">Close</button>
                 </div>
               </div>
@@ -173,35 +173,38 @@
       </div>
     </div>
     <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const subjectColors = {
-      maths: '#154360',
-      chemistry: '#1A5D3C',
-      physics: '#a39a30',
-      english: '#512E5F',
-    };
-
-    document.querySelectorAll('.subject').forEach(el => {
-      const subject = el.dataset.subject.trim().toLowerCase();
-      const color = subjectColors[subject] || '#a2b4b4';
-
-      el.style.backgroundColor = color;
-      el.style.color = 'white';  // for contrast
-    });
-  });
-
-  const chatBtn = document.getElementById('chat-now-btn');
-    const infoBox = document.getElementById('teacher-info');
-    const closeBtn = document.getElementById('close-info');
-
-    chatBtn.addEventListener('click', () => {
-      infoBox.classList.add('show');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      infoBox.classList.remove('show');
-    });
-</script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const subjectColors = {
+          maths: '#154360',
+          chemistry: '#1A5D3C',
+          physics: '#a39a30',
+          english: '#512E5F',
+        };
+      
+        document.querySelectorAll('.subject').forEach(el => {
+          const subject = el.dataset.subject.trim().toLowerCase();
+          const color = subjectColors[subject] || '#a2b4b4';
+          el.style.backgroundColor = color;
+          el.style.color = 'white';  // for contrast
+        });
+      
+        const chatBtn = document.getElementById('chat-now-btn');
+        const infoBox = document.getElementById('teacher-info');
+        const closeBtn = document.getElementById('close-info');
+      
+        if (chatBtn && infoBox && closeBtn) {
+          chatBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // ✅ prevents any default reload/submission behavior
+            infoBox.classList.add('show');
+          });
+      
+          closeBtn.addEventListener('click', () => {
+            infoBox.classList.remove('show');
+          });
+        }
+      });
+      </script>
+      
 
 
   </body>
