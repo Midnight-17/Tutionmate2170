@@ -11,6 +11,39 @@
     />
 
     <title>Stitch Design</title>
+    <style>
+      #teacher-info {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%) scale(0.8);
+      background-color: #111;
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      min-width: 250px;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 1000;
+      pointer-events: none; /* Prevent clicking when hidden */
+    }
+
+    #teacher-info.show {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #close-info {
+      margin-top: 1rem;
+      background: #555;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    </style>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -83,24 +116,28 @@
               <div class="flex w-full flex-col gap-4 items-center">
                 <div class="flex gap-4 flex-col items-center">
                   <div
-                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADdgGazoz4C25eMMRZNhOO-W5IE-gAd3TV7qZkkYp9_LMV238wgkDEeMZ001mF1wX83GprjmSI60LeqLcO7rXJvu2bzQZp7gcElfoALMD8NleFIjFMa-r862JbElqSCy5xHBB35n73KSx4nlXGPX1ErJKeZFC_6yIcF8GQm0Vo-GWhHuz66NNAGqZcpGJG9GOpbH-5gsUdkxy3c8qmCSWyKicMQMMJe1oXQwStV0rY7WThzkN05EI8ZgMTJFqwzPuvaEKAx5EVhiM");'
-                  ></div>
+                  ><img style="height: 200px; width:200px; border-radius: 100px; object-fit: cover" src="{{ teacher.image.url }}"></div>
                   <div class="flex flex-col items-center justify-center justify-center">
                     <p class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">{{ teacher.user.username }}</p>
                     <div style="display: flex; flex-direction: row; gap: 10px;">
                     {% for subject in teacher.subjects.all %}
-                    <p class="text-[#a2b4b4] text-base font-normal leading-normal text-center">{{ subject.type }}  </p>
+                    <p style="color: rgb(219, 215, 215); font-size: medium; margin-right: 10px ;padding: 2px 6px;border-radius:4px ;margin-top: 10px; margin-bottom:10px" data-subject="{{ subject.type }}" class="subject text-base font-normal leading-normal text-center"> {{ subject }}</p>
                     {% endfor %}
                   </div>
                     <p class="text-[#a2b4b4] text-base font-normal leading-normal text-center">Online Teacher</p>
                   </div>
                 </div>
                 <button
-                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#2b3636] text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto"
+                  id="chat-now-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#2b3636] text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto"
                 >
                   <span class="truncate">Chat Now</span>
                 </button>
+                <div id="teacher-info">
+                  <p><strong>Teacher:</strong> {{ teacher.user.username }}</p>
+                  <p><strong>Email:</strong> {{ teacher.user.email }}</p>
+                  <p><strong>Phone:</strong> test</p>
+                  <button id="close-info">Close</button>
+                </div>
               </div>
             </div>
             <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About</h2>
@@ -135,5 +172,37 @@
         </div>
       </div>
     </div>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const subjectColors = {
+      maths: '#154360',
+      chemistry: '#1A5D3C',
+      physics: '#a39a30',
+      english: '#512E5F',
+    };
+
+    document.querySelectorAll('.subject').forEach(el => {
+      const subject = el.dataset.subject.trim().toLowerCase();
+      const color = subjectColors[subject] || '#a2b4b4';
+
+      el.style.backgroundColor = color;
+      el.style.color = 'white';  // for contrast
+    });
+  });
+
+  const chatBtn = document.getElementById('chat-now-btn');
+    const infoBox = document.getElementById('teacher-info');
+    const closeBtn = document.getElementById('close-info');
+
+    chatBtn.addEventListener('click', () => {
+      infoBox.classList.add('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      infoBox.classList.remove('show');
+    });
+</script>
+
+
   </body>
 </html>
