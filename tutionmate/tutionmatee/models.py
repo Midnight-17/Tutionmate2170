@@ -24,6 +24,8 @@ class teacher(models.Model):
     )
     image = models.ImageField(upload_to='images/', blank=True)  # images/ is the subfolder in MEDIA_ROOT
     password = models.CharField(max_length=100, blank=True)
+    phone_number = models.CharField(max_length=8, blank=True, null= True)
+    
 
 
     def validate_rate(self):

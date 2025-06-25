@@ -14,6 +14,13 @@ class CreateTeacherForm(forms.ModelForm):
     image = forms.ImageField(required=True)
     min_rate = forms.IntegerField(required=True, min_value=0, max_value=5000)
     max_rate = forms.IntegerField(required=True, min_value=0, max_value=10000)
+    phone_number = forms.CharField(
+    widget=forms.TextInput(attrs={'placeholder': 'Enter 8-digit phone number'}),
+    label="Phone Number",
+    max_length=8,
+    min_length=8
+)
+
     
     subjects = forms.ModelMultipleChoiceField(
         queryset=subjects.objects.all(),

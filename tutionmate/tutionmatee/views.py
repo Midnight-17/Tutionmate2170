@@ -92,6 +92,7 @@ def loginpage(request):
                 image=form.cleaned_data['image'],
                 min_rate=form.cleaned_data['min_rate'],
                 max_rate=form.cleaned_data['max_rate'],
+                phone_number = form.cleaned_data('phone_number')
             )
             teacher_obj.subjects.set(form.cleaned_data['subjects'])
             teacher_obj.save()
