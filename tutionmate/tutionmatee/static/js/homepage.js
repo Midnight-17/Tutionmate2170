@@ -13,10 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.style.left = '-250px';
 
     })
+    searchbar.addEventListener('keydown', function(event) {
+        if (event.key === "Enter"){
+            searchbar.value = ""
+        }
+    })
 
     
+    })
 
-
-
-
-});

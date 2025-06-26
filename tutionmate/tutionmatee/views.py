@@ -61,6 +61,7 @@ def homepage(request):
             ).order_by('?')
 
             teachers = list(matching_teachers) + list(non_matching_teachers)
+        
 
             return render(request, 'newdiscover.html', {
                 "teachers": teachers

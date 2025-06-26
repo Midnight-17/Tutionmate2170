@@ -7,8 +7,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
     <body>
+        <div>
+            <a href="javascript:history.back()" class="absolute top-4 left-4 text-gray-700 text-2xl hover:text-black">
+                 <i style="color:white ; font-size: 40px; margin-left: 20px; margin-top: 20px; " class="fas fa-arrow-left"></i>
+            </a>
+
+        </div>
+
         <h1 class="page-title">Discover New</h1>
         <div class="discover-page-grid">
             {% for teacher in teachers %}
