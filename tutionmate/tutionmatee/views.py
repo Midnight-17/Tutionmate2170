@@ -48,6 +48,17 @@ def discover(request):
 
 
 def homepage(request):
+    teachers_ = teacher.objects.all().order_by('?').distinct()
+    first_four = teachers_[:4]
+    second_four = teachers_[4:8]
+    third_four = teachers_ [8:12]
+    teachers = {
+        "first_four":first_four ,
+        "second_four" : second_four , 
+        "third_four":third_four
+    }
+
+
     if request.method == 'POST':
         search = request.POST.get('homepage-search-bar', '').strip()
 
@@ -69,7 +80,7 @@ def homepage(request):
 
     else:
         return render(request, 'homepage.html',
-                {"teachers":teacher.objects.all()
+                {"teachers": teachers
                     })
 
 def newdiscover(request):
@@ -93,7 +104,7 @@ def loginpage(request):
                 image=form.cleaned_data['image'],
                 min_rate=form.cleaned_data['min_rate'],
                 max_rate=form.cleaned_data['max_rate'],
-                phone_number = form.cleaned_data('phone_number')
+                phone_number = form.cleaned_data['phone_number']
             )
             teacher_obj.subjects.set(form.cleaned_data['subjects'])
             teacher_obj.save()

@@ -58,7 +58,7 @@
 
   <a href="{% url 'tutionmate:newdiscover' %}"><h2 class="teacher-class">Discover new</h2></a>
   <div class="teacher-row">
-    {% for teacher in teachers|slice:":4"%}
+    {% for teacher in teachers.first_four %}
     <a href="{% url 'tutionmate:profile' teacher.user.username %}">
     <div class="teacher-card">
       <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
@@ -83,10 +83,10 @@
 
   <h2 class="teacher-class">Best Reviewed</h2>
   <div class="teacher-row">
-    {% for teacher in teachers|slice:":4"%}
+    {% for teacher in teachers.second_four %}
     <a href="{% url 'tutionmate:profile' teacher.user.username %}">
     <div class="teacher-card">
-      <div class="teacher-img"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80" alt="Cute Dog" /></div>
+      <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
       <div class='teacher-info'>
         <p id="teacher_name">{{ teacher.user.username }}</p>
         <p id="teacher_rate">${{teacher.min_rate}}-{{teacher.max_rate}}/hr</p>
@@ -106,10 +106,10 @@
 
   <h2 class="teacher-class">Near you</h2>
   <div class="teacher-row">
-    {% for teacher in teachers|slice:":4"%}
+    {% for teacher in teachers.third_four %}
     <a href="{% url 'tutionmate:profile' teacher.user.username %}">
     <div class="teacher-card">
-      <div class="teacher-img"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80" alt="Cute Dog" /></div>
+      <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
       <div class='teacher-info'>
         <p id="teacher_name">{{ teacher.user.username }}</p>
         <p id="teacher_rate">${{teacher.min_rate}}-{{teacher.max_rate}}/hr</p>
