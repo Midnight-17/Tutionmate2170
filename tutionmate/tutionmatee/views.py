@@ -2,18 +2,39 @@
 from .models import teacher,subjects
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from .forms import CreateTeacherForm, CreateUser
+from .forms import CreateTeacherForm, CreateUser,UserForm,TeacherForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.db.models import Case, When, Value, IntegerField
+from django.contrib.auth.decorators import login_required
+
 
 def admin(request):
     return render(request, "firstpage.html" , {
         "teachers": teacher.objects.all(),
     })
 
+@login_required
 def test(request):
-    return render(request, 'test.html')
+    user_instance = request.user
+    teacher_instance = user_instance.teacher 
+    if request.method == "POST":
+        user_form = UserForm(request.POST, instance=user_instance)
+        teacher_form = TeacherForm(request.POST, request.FILES, instance=teacher_instance)
+
+        if user_form.is_valid() and teacher_form.is_valid():
+            user_form.save()
+            teacher_form.save()
+            return redirect('tutionmate:homepage')  # change this to wherever you want to go next
+
+    else:
+        user_form = UserForm(instance=user_instance)
+        teacher_form = TeacherForm(instance=teacher_instance)
+
+    return render(request, 'test.html', {
+        "user_form": user_form,
+        "teacher_form": teacher_form
+    })
 
 
 def profile(request, tutor_name):

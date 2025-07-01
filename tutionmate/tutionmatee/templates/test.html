@@ -10,6 +10,20 @@
 
 </head>
 <body>
-   <h1>yeet</h1>
-   
+    {% if request.user.is_authenticated %}
+        <!-- profile_edit.html -->
+    <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+    <h2>Account Info</h2>
+  {{ user_form.as_p }}
+
+    <h2>Teacher Profile</h2>
+  {{ teacher_form.as_p }}
+
+    <button type="submit">Save</button>
+    </form>
+
+
+   {% endif %}
 </body>
