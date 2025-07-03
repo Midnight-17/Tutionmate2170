@@ -56,3 +56,20 @@ class CreateUser(UserCreationForm):
     class Meta:
         model = User
         fields = ["username","email","password1","password2"]
+
+from django import forms
+from django.contrib.auth.models import User
+from .models import teacher, subjects
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+class TeacherForm(forms.ModelForm):
+    class Meta:
+        model = teacher
+        fields = ['image', 'phone_number', 'min_rate', 'max_rate', 'subjects']
+        widgets = {
+            'subjects': forms.SelectMultiple(attrs={'size': 5}),
+        }

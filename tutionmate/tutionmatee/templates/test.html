@@ -9,95 +9,20 @@
   <!-- Add any meta, links, or scripts here -->
 </head>
 <body>
-  <div style="display: flex; justify-content: space-between;">
-  <span class="menu" id="menu">
-    &#9776;
-  </span>
-  <span style="  padding-top: 30px;
-   padding-right: 20px; align-items: center; font-size: larger; font-weight: bolder;">
     {% if request.user.is_authenticated %}
-    {% with teacher=request.user.teacher %}
-    <a href="{% url 'tutionmate:profile' request.user.username %}">
-    <img src="{{ teacher.image.url }}" alt="Profile Picture" class="profile-icon-img"
-    style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover;">
-    </a>
-    {% endwith %}
+        <!-- profile_edit.html -->
+    <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
 
-    {% endif %}
-  </span>
-</div>  
+    <h2>Account Info</h2>
+  {{ user_form.as_p }}
 
+    <h2>Teacher Profile</h2>
+  {{ teacher_form.as_p }}
 
-
-  <nav class="sidebar" id="sidebar">
-    <ul class="sidebar-list">
-        <a href="{% url 'tutionmate:newdiscover' %}"><li>Discover New</li></a>
-        <a href="#"><li>Best Reviewed</li></a>
-        <a href="#"><li>Near Me</li></a>
-        <a href="{% url 'tutionmate:loginpage' %}"><li>Login / Sign Up</li></a>
-    </ul>
-  </nav>
-
-
-
-  <div class="intro">
-    <form method="POST">
-      {% csrf_token %}
-    <input type="text" placeholder="Search for Tutors..." class="search-bar" id="homepage-search-bar" name="homepage-search-bar" required>
+    <button type="submit">Save</button>
     </form>
-    <h1 id="intro-heading">Join our community today</h1>
-    <p id="intro-para">we have a diverse community of tutors and willing to teach, guide and mentor you to acing your next exam</p>
-    <div class="btns">
-      <a href="{% url 'tutionmate:login1' %}"><button  class="btn login">Log In</button></a>
-      <a href="{% url 'tutionmate:loginpage' %}"><button class="btn signup">Sign Up</button></a>
-    </div>
-  </div>
 
 
-
-
-  <a href="{% url 'tutionmate:newdiscover' %}"><h2 class="teacher-class">Discover new</h2></a>
-  <div class="teacher-row">
-    {% for teacher in teachers %}
-    <a href="{% url 'tutionmate:profile' teacher.user.username %}">
-    <div class="teacher-card">
-      <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
-      <div class='teacher-info'>
-        <p id="teacher_name">{{ teacher.user.username }}</p>
-        <p id="teacher_rate">${{teacher.min_rate}}-{{teacher.max_rate}}/hr</p>
-        <div class="subjects">
-        {% for subject in teacher.subjects.all|slice:":3" %}
-          <p class="subject {{subject.type}}">{{subject.type}}</p>
-        {% endfor %}
-        
-        </div>
-      </div>
-    </div></a>
-    {% endfor %}
-  
-  </div>
-</div>
-
-
-
-
-<a href="{% url 'tutionmate:newdiscover' %}"><h2 class="teacher-class">Discover new</h2></a>
-<div class="teacher-row">
-  {% for teacher in first_four %}
-  <a href="{% url 'tutionmate:profile' teacher.user.username %}">
-  <div class="teacher-card">
-    <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
-    <div class='teacher-info'>
-      <p id="teacher_name">{{ teacher.user.username }}</p>
-      <p id="teacher_rate">${{teacher.min_rate}}-{{teacher.max_rate}}/hr</p>
-      <div class="subjects">
-      {% for subject in teacher.subjects.all|slice:":3" %}
-        <p class="subject {{subject.type}}">{{subject.type}}</p>
-      {% endfor %}
-      
-      </div>
-    </div>
-  </div></a>
-  {% endfor %}
-
-</div>
+   {% endif %}
+</body>
