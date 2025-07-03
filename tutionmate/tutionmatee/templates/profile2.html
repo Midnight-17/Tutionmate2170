@@ -32,16 +32,20 @@
                 <p class="subject {{subject.type}}">{{ subject.type }}</p>
                 {% endfor %}
             </div>
-            <button class="chat">Chat Now</button>
-            
-
+            <p class="Bio"> Edison is a great teacher with many years of experience teaching as a secondary school teacher, He believe in teacher through action and 
+            things like that
+            </p>
             
 
         </div>
-        <h2>Bio:</h2>
-        <hr style="border: none; height: 1px ;width:100vw; background-color: #444444;">
-        <p> Edison is a great teacher with many years of experience teaching as a secondary school teacher, He believe in teacher through action and 
-            things like that
-        </p>
+        
+        <h2 id="Info">Info</h2>
+        <hr style="border: none; height: 1px ; background-color: #66cccc;">
+        <div style="display: flex; flex-direction: column;">
+            <div><p class="info-type">Rate: </p><p style="display: inline;">${{ teacher.min_rate }}-{{ teacher.max_rate }}/hr</p></div>
+            <div><p class="info-type">Phone Number: </p><p style="display: inline;">{{ teacher.phone_number }}</p></div>
+            <div><p class="info-type">Email Adress: </p><p style="display: inline;">{{ teacher.user.email_adress }}</p></div>
+            <div><p class="info-type">Area: </p><p style="display: inline;">Sengkang</p></div>
+        </div>        
     </body>
 </html>
