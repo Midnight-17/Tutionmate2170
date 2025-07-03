@@ -1,0 +1,47 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ teacher.user.username }} Profile</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+    </head>
+    <body>
+        <div>
+            <a href="javascript:history.back()" class="absolute top-4 left-4 text-gray-700 text-2xl hover:text-black">
+                 <i style="color:white ; font-size: 40px; margin-left: 20px; margin-top: 20px; " class="fas fa-arrow-left"></i>
+            </a>
+
+        </div>
+        <div class="top_part">
+            <div>
+                <img src="{{ teacher.image.url }}" id = "teacher_pic">
+            </div>
+            <div>
+                <h1 id ="teacher_name">{{ teacher.user.username }}</h1>
+            </div>
+            <div>
+                {% for subject in teacher.subjects.all %}
+                <p class="subject {{subject.type}}">{{ subject.type }}</p>
+                {% endfor %}
+            </div>
+            <button class="chat">Chat Now</button>
+            
+
+            
+
+        </div>
+        <h2>Bio:</h2>
+        <hr style="border: none; height: 1px ;width:100vw; background-color: #444444;">
+        <p> Edison is a great teacher with many years of experience teaching as a secondary school teacher, He believe in teacher through action and 
+            things like that
+        </p>
+    </body>
+</html>

@@ -1,0 +1,96 @@
+:root {
+    --color-background: #000000;  /* Black background */
+    --color-surface: #111111;     /* Slightly lighter black for cards/modals */
+    --color-text: #E5E5E5;        /* Light grayish text */
+    --color-heading: #FFFFFF;     /* White headings */
+    --color-muted: #B3B3B3;       /* Muted gray text */
+  
+    --color-primary: #4DB6AC;     /* Lighter, greenish-blue */
+    --color-primary-hover: #3A9F92; /* Slightly darker hover */
+    --color-success: #22C55E;     /* Success color (green) */
+    --color-error: #EF4444;       /* Error color (red) */
+    --space-xs: 0.5rem;    /* Originally 0.25rem */
+    --space-sm: 1rem;      /* Originally 0.5rem */
+    --space-md: 2rem;      /* Originally 1rem */
+    --space-lg: 4rem;      /* Originally 2rem */
+    --space-xl: 6rem;      /* Originally 3rem */
+  }
+
+  /* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  color: inherit;         /* Or any color you want, like white or black */
+  text-decoration: none;  /* Removes the underline */
+}
+
+body {
+    background-color: #000000;
+}
+
+#teacher_pic{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+.top_part{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+#teacher_name{
+  color: white;
+
+}
+
+p, h1, h2 {
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.subject {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;  /* Small padding for compactness */
+  margin: 0.5rem 0.1rem;          /* Reduced margin for tight spacing */
+  border-radius: 5px;      /* Rectangular borders */
+  color: white;            /* White text */
+  font-size: 1rem;       /* Font size reduced to 0.6rem */
+  font-weight: 350;        /* Thinner letters */
+     /* Bold text */
+}
+
+.Maths {
+  background-color: #154360; /* Even Darker Blue */
+}
+
+.Chemistry {
+  background-color: #1A5D3C; /* Even Darker Green */
+}
+
+.Physics {
+  background-color: #a39a30; /* Lighter Yellow */
+}
+
+
+.English {
+  background-color: #512E5F; /* Even Darker Purple */
+}
+
+.chat {
+  padding: 10px 20px ;
+  border-radius: 20px;
+  font-size: 1rem;
+  background: linear-gradient(45deg, #777777, #939393);
+  border: 0px;
+  color: white;
+  margin-top: 15px;
+
+}

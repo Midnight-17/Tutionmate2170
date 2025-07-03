@@ -13,7 +13,12 @@ def admin(request):
     })
 
 def test(request):
-    return render(request, 'test.html')
+    teachers_ = teacher.objects.all().order_by('?').distinct()
+    first_four = teachers_[:4]
+    return render(request, 'test.html',{
+        "teachers":teachers_,
+        "first_four":first_four
+    })
 
 
 def profile(request, tutor_name):
@@ -48,7 +53,7 @@ def discover(request):
 
 
 def homepage(request):
-    teachers_ = teacher.objects.all().order_by('?').distinct()
+    teachers_ = list(teacher.objects.all().order_by('?').distinct())
     first_four = teachers_[:4]
     second_four = teachers_[4:8]
     third_four = teachers_ [8:12]
@@ -143,3 +148,8 @@ def login1(request):
 
     return render(request, "login1.html")
 # Create your views here
+
+def profile2(request,name):
+    return render(request, 'profile2.html',{
+        "teacher" : teacher.objects.get(user__username = name)
+    })
