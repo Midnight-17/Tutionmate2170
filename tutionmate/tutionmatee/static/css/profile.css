@@ -94,13 +94,25 @@ p, h1, h2 {
   margin-top: 15px;
 
 }
+.About_me{
+  text-align: center;
+  color: #66cccc;
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 30px;
+  text-decoration: underline;
+  text-decoration-color: white;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
 
 .Bio{
   margin-left: 7vw;
   margin-right: 7vw;
   margin-bottom: 60px;
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 18px;
+  text-align: center
 }
 .info-type{
   color: #66cccc;
@@ -108,11 +120,12 @@ p, h1, h2 {
   margin-left: 2.5vw;
   display: inline-flex;
   margin-right: 5px;
+  font-weight: 600;
 
 }
 
 hr{
-  margin-bottom: 30px;
+  margin-bottom:10px;
   width: 95vw;
   margin-left: 2.5vw;
   margin-right: 2.5vw;
