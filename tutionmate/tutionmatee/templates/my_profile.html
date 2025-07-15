@@ -1,0 +1,55 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ teacher.user.username }} Profile</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+    </head>
+    <body>
+        <div class="heading_part">
+            <a href="javascript:history.back()" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <a href="{% url 'tutionmate:test' %}" class="edit-btn">
+                <i class="fa-solid fa-pencil"></i><p style="display: inline-flex;">Edit Profile</p>
+            </a>
+        </div>
+
+        <div class="top_part">
+            <div>
+                <img src="{{ teacher.image.url }}" id = "teacher_pic">
+            </div>
+            <div>
+                <h1 id ="teacher_name">{{ teacher.user.username }}</h1>
+            </div>
+            <div>
+                {% for subject in teacher.subjects.all %}
+                <p class="subject {{subject.type}}">{{ subject.type }}</p>
+                {% endfor %}
+            </div>
+            <p class="About_me">About Me:</p>
+            <p class="Bio"> Edison is a great teacher with many years of experience teaching as a secondary school teacher, He believe in teacher through action and 
+            things like that
+            </p>
+            
+
+        </div>
+        
+        <h2 id="Info">Info</h2>
+        <hr style="border: none; height: 1px ; background-color: #66cccc;">
+        <div style="display: flex; flex-direction: column;">
+            <div><p class="info-type">Rate: </p><p style="display: inline;">${{ teacher.min_rate }}-{{ teacher.max_rate }}/hr</p></div>
+            <div><p class="info-type">Phone Number: </p><p style="display: inline;">{{ teacher.phone_number }}</p></div>
+            <div><p class="info-type">Email Adress: </p><p style="display: inline;">{{ teacher.user.email_adress }}</p></div>
+            <div><p class="info-type">Area: </p><p style="display: inline;">Sengkang</p></div>
+        </div>        
+    </body>
+</html>

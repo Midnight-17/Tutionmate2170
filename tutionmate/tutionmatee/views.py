@@ -169,3 +169,9 @@ def profile2(request,name):
     return render(request, 'profile2.html',{
         "teacher" : teacher.objects.get(user__username = name)
     })
+
+@login_required
+def my_profile(request, name):
+    return render(request, 'my_profile.html', {
+        "teacher":teacher.objects.get(user__username = name)
+    })
