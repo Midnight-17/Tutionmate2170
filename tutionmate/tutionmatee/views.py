@@ -175,3 +175,28 @@ def my_profile(request, name):
     return render(request, 'my_profile.html', {
         "teacher":teacher.objects.get(user__username = name)
     })
+
+
+@login_required
+def edit(request):
+    teacher_ = request.user.teacher
+    user_instance = request.user
+    teacher_instance = user_instance.teacher 
+    if request.method == "POST":
+        user_form = UserForm(request.POST, instance=user_instance)
+        teacher_form = TeacherForm(request.POST, request.FILES, instance=teacher_instance)
+
+        if user_form.is_valid() and teacher_form.is_valid():
+            user_form.save()
+            teacher_form.save()
+            return redirect('tutionmate:homepage')  # change this to wherever you want to go next
+
+    else:
+        user_form = UserForm(instance=user_instance)
+        teacher_form = TeacherForm(instance=teacher_instance)
+
+    return render(request, 'edit.html', {
+        "user_form": user_form,
+        "teacher_form": teacher_form,
+        "teacher": teacher_
+    })

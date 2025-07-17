@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <!-- Add any meta, links, or scripts here -->
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+        <!-- profile_edit.html -->
+    <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+        <div>
+            <a href="javascript:history.back()" class="absolute top-4 left-4 text-gray-700 text-2xl hover:text-black">
+                 <i style="color:white ; font-size: 40px; margin-left: 20px; margin-top: 20px; " class="fas fa-arrow-left"></i>
+            </a>
+
+        </div>
+        <div class="top_part">
+            <div>
+                <img src="{{ teacher.image.url }}" id = "teacher_pic">
+            </div>
+            <div>
+                <h1 id ="teacher_name">{{ user_form.username }}</h1>
+            </div>
+            <div>
+                <p class="subject {{subject.type}}">{{ teacher_form.subjects }}</p>
+             
+            </div>
+            <p class="About_me">About Me:</p>
+            <p class="Bio"> Edison is a great teacher with many years of experience teaching as a secondary school teacher, He believe in teacher through action and 
+            things like that
+            </p>
+            
+
+        </div>
+        
+        <h2 id="Info">Info</h2>
+        <hr style="border: none; height: 1px ; background-color: #66cccc;">
+        <div style="display: flex; flex-direction: column;">
+            <div><p class="info-type">Rate: </p><p style="display: inline;">${{ teacher_form.min_rate }}-{{ teacher_form.max_rate }}/hr</p></div>
+            <div><p class="info-type">Phone Number: </p><p style="display: inline;">{{ teacher_form.phone_number }}</p></div>
+            <div><p class="info-type">Email Adress: </p><p style="display: inline;">{{ user_form.email }}</p></div>
+            <div><p class="info-type">Area: </p><p style="display: inline;">Sengkang</p></div>
+        </div>    
+        {% endif %}    
+</body>
+
