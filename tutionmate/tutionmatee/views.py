@@ -96,7 +96,8 @@ def homepage(request):
         
 
             return render(request, 'newdiscover.html', {
-                "teachers": teachers
+                "teachers": teachers,
+                "search":search
             })
 
     else:
