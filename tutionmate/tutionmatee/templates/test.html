@@ -9,20 +9,5 @@
   <!-- Add any meta, links, or scripts here -->
 </head>
 <body>
-    {% if request.user.is_authenticated %}
-        <!-- profile_edit.html -->
-    <form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-
-    <h2>Account Info</h2>
-  {{ user_form.as_p }}
-
-    <h2>Teacher Profile</h2>
-  {{ teacher_form.as_p }}
-
-    <button type="submit">Save</button>
-    </form>
-
-
-   {% endif %}
+  <div><p class="info-type">Email Adress: </p><p style="display: inline;">{{ teacher.user.email }}</p></div>
 </body>
