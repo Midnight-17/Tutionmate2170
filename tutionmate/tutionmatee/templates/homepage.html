@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Page Title</title>
+  <title>Homepage</title>
   <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
   <!-- Add any meta, links, or scripts here -->
 </head>
@@ -31,9 +31,7 @@
 
   <nav class="sidebar" id="sidebar">
     <ul class="sidebar-list">
-        <a href="{% url 'tutionmate:newdiscover' %}"><li>Discover New</li></a>
-        <a href="{% url 'tutionmate:homepage' %}"><li>Best Reviewed</li></a>
-        <a href="{% url 'tutionmate:homepage' %}"><li>Near Me</li></a>
+        <a href="{% url 'tutionmate:homepage' %}"><li>Homepage</li></a>
         <a href="{% url 'tutionmate:login1' %}"><li>Login</li></a>
         <a href="{% url 'tutionmate:loginpage' %}"><li>Sign up</li></a>
     </ul>
@@ -57,10 +55,10 @@
 
 
 
-  <a href="{% url 'tutionmate:newdiscover' %}"><h2 class="teacher-class">Discover new</h2></a>
+  <h2 class="teacher-class">Discover new</h2>
   <div class="teacher-row">
     {% for teacher in teachers.first_four %}
-    <a href="{% url 'tutionmate:profile' teacher.user.username %}">
+    <a href="{% url 'tutionmate:profile2' teacher.user.username %}">
     <div class="teacher-card">
       <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
       <div class='teacher-info'>
@@ -85,7 +83,7 @@
   <h2 class="teacher-class">Best Reviewed</h2>
   <div class="teacher-row">
     {% for teacher in teachers.second_four %}
-    <a href="{% url 'tutionmate:profile' teacher.user.username %}">
+    <a href="{% url 'tutionmate:profile2' teacher.user.username %}">
     <div class="teacher-card">
       <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
       <div class='teacher-info'>
@@ -108,7 +106,7 @@
   <h2 class="teacher-class">Near you</h2>
   <div class="teacher-row">
     {% for teacher in teachers.third_four %}
-    <a href="{% url 'tutionmate:profile' teacher.user.username %}">
+    <a href="{% url 'tutionmate:profile2' teacher.user.username %}">
     <div class="teacher-card">
       <div class="teacher-img"><img src="{{ teacher.image.url }}" alt="Cute Dog" /></div>
       <div class='teacher-info'>

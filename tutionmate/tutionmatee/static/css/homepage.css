@@ -80,9 +80,7 @@
     font-size: 4rem ;
     text-align: center;
     font-weight: 900;
-    text-decoration: underline;
-    text-decoration-color: #66cccc;
-    text-underline-offset: 5px;
+    text-shadow: 10px 16px 35px rgba(30,158,179,1);
     max-width:90vw;
     
   
